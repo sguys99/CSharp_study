@@ -32,14 +32,16 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.tboxConfigData = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tboxData = new System.Windows.Forms.TextBox();
-            this.cboxData = new System.Windows.Forms.CheckBox();
             this.numData = new System.Windows.Forms.NumericUpDown();
+            this.cboxData = new System.Windows.Forms.CheckBox();
+            this.tboxData = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnConfigRead = new System.Windows.Forms.Button();
             this.btnConfigSet = new System.Windows.Forms.Button();
+            this.SFDialog = new System.Windows.Forms.SaveFileDialog();
+            this.OFDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numData)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,7 @@
             this.btnLoad.TabIndex = 0;
             this.btnLoad.Text = "Text 읽어오기";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnSave
             // 
@@ -61,6 +64,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Text 저장하기";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tboxConfigData
             // 
@@ -86,39 +90,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Config";
             // 
-            // label1
+            // numData
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "1. Text :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "2. Check Box :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 132);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "3. Number : ";
-            // 
-            // tboxData
-            // 
-            this.tboxData.Location = new System.Drawing.Point(67, 30);
-            this.tboxData.Name = "tboxData";
-            this.tboxData.Size = new System.Drawing.Size(129, 20);
-            this.tboxData.TabIndex = 1;
+            this.numData.Location = new System.Drawing.Point(91, 132);
+            this.numData.Name = "numData";
+            this.numData.Size = new System.Drawing.Size(120, 20);
+            this.numData.TabIndex = 3;
             // 
             // cboxData
             // 
@@ -130,12 +107,39 @@
             this.cboxData.Text = "CB1";
             this.cboxData.UseVisualStyleBackColor = true;
             // 
-            // numData
+            // tboxData
             // 
-            this.numData.Location = new System.Drawing.Point(91, 132);
-            this.numData.Name = "numData";
-            this.numData.Size = new System.Drawing.Size(120, 20);
-            this.numData.TabIndex = 3;
+            this.tboxData.Location = new System.Drawing.Point(67, 30);
+            this.tboxData.Name = "tboxData";
+            this.tboxData.Size = new System.Drawing.Size(129, 20);
+            this.tboxData.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "3. Number : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "2. Check Box :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "1. Text :";
             // 
             // btnConfigRead
             // 
@@ -145,6 +149,7 @@
             this.btnConfigRead.TabIndex = 0;
             this.btnConfigRead.Text = "Config 가져오기";
             this.btnConfigRead.UseVisualStyleBackColor = true;
+            this.btnConfigRead.Click += new System.EventHandler(this.btnConfigRead_Click);
             // 
             // btnConfigSet
             // 
@@ -154,6 +159,11 @@
             this.btnConfigSet.TabIndex = 0;
             this.btnConfigSet.Text = "Config 설정하기";
             this.btnConfigSet.UseVisualStyleBackColor = true;
+            this.btnConfigSet.Click += new System.EventHandler(this.btnConfigSet_Click);
+            // 
+            // OFDialog
+            // 
+            this.OFDialog.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -190,6 +200,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnConfigRead;
         private System.Windows.Forms.Button btnConfigSet;
+        private System.Windows.Forms.SaveFileDialog SFDialog;
+        private System.Windows.Forms.OpenFileDialog OFDialog;
     }
 }
 

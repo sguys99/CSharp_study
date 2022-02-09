@@ -1,0 +1,35 @@
+﻿<Window x:Class="DateTimeGadget.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DateTimeGadget"
+        mc:Ignorable="d"
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="200" Width="150">
+        <!--WindowStyle = "None" : 위젯은 최대 최소화 부분없으므로 none 처리-->
+        <!--배경 투명 처리 Allows... Background...-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Ellipse MouseDown="Ellipse_MouseDown" Opacity="0.2" Grid.RowSpan="6" 
+                 Fill="Cyan"/>
+        <TextBlock Name="tb_eh" Foreground="Red" FontWeight="Heavy"
+                   HorizontalAlignment="Center" 
+                   Text="http://ehpub.co.kr" Grid.Row="1"/>
+        <TextBlock x:Name="tb_date" Text="0000-00-00" HorizontalAlignment="Center" 
+                   Grid.Row="2"/>
+        <TextBlock x:Name="tb_time" Text="오전 00:00:00" HorizontalAlignment="Center" 
+                   Grid.Row="3"/>
+        <Button Click="Button_Click" Grid.Row="4" Width="100" Content="닫기"/>
+    </Grid>
+</Window>

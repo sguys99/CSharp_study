@@ -1,0 +1,21 @@
+﻿<Window x:Class="_13ImageControl2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_13ImageControl2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="400">
+    <StackPanel>
+        <!--스택판넬과 유사하나 한줄이 다차면 다음줄로 넘어간다-->
+        <WrapPanel Margin="10" HorizontalAlignment="Center">
+            <Button x:Name="btnLoadFromFile" Margin="0, 0, 20, 0" Click="btnLoadFromFile_Click">
+                Load from File
+            </Button>
+            <Button Name="btnLoadFromResource" Click="BtnLoadFromResource_Click">
+                Load from Resource
+            </Button>
+        </WrapPanel>
+        <Image Name="imgDynamic" Margin="10"  />
+    </StackPanel>
+</Window>
